@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { useMutation, gql } from '@apollo/client';
-
+import {useHistory} from 'react-router';
 const CREATE_LINK_MUTATION = gql`
     mutation PostMutation(
         $description: String!
@@ -17,7 +17,7 @@ const CREATE_LINK_MUTATION = gql`
 `
 
 const CreateLink = () => {
-
+    const history = useHistory();
     //formState is the current state, setFormState is the function that allows you to update the state
     const [formState, setFormState] = useState({
         description: '',
@@ -27,7 +27,8 @@ const CreateLink = () => {
         variables: {
             description: formState.description,
             url: formState.url
-        }
+        },
+        onCompleted: () => history.push('/')
     })
    return (
        <div>
