@@ -16,10 +16,6 @@ export const FEED_QUERY = gql`
         id
         url
         description
-        postedBy {
-          id
-          name
-        }
         votes {
           id
           user {
@@ -39,10 +35,6 @@ const NEW_LINKS_SUBSCRIPTION = gql`
       id
       url
       description
-      postedBy {
-        id
-        name
-      }
       votes {
         id
         user {
@@ -62,10 +54,6 @@ const NEW_VOTES_SUBSCRIPTION = gql`
         id
         url
         description
-        postedBy {
-          id
-          name
-        }
         votes {
           id
           user {
