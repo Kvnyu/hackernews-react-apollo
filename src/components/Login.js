@@ -3,7 +3,6 @@ import { useHistory } from 'react-router';
 import { useMutation, gql } from '@apollo/client';
 import {AUTH_TOKEN} from '../constants';
 const SIGNUP_MUTATION = gql`
-
   mutation SignupMutation(
     $email: String!
     $password: String!

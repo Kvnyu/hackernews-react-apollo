@@ -5,8 +5,9 @@ import CreateLink from './CreateLink'
 import {Switch, Route} from 'react-router-dom';
 import Header from './Header.js'
 import Login from './Login.js'
-
+import Search from './Search'
 import './../styles/App.css';
+
 const App = () => {
     return(
         <div className="center w85">
@@ -20,6 +21,7 @@ const App = () => {
                                         component={CreateLink}
                                 />
                                 <Route exact path="/login" component={Login} />
+                                <Route exact path="/search" component={Search} />
                         </Switch>
                 </div>
         </div>
