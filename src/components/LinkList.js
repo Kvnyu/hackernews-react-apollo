@@ -14,6 +14,7 @@ export const FEED_QUERY = gql`
       id
       links {
         id
+        createdAt
         url
         description
         votes {
@@ -22,13 +23,10 @@ export const FEED_QUERY = gql`
             id
           }
         }
-        createdAt
       }
       count
     }
-  }
-`;
-
+  }`
 const NEW_LINKS_SUBSCRIPTION = gql`
   subscription {
     newLink {

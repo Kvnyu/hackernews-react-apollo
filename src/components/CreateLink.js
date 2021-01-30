@@ -44,7 +44,9 @@ const CreateLink = () => {
                     skip,
                     orderBy
                 }
-            });
+
+            })
+            ;
 
             cache.writeQuery({
                 query: FEED_QUERY,
@@ -67,7 +69,8 @@ const CreateLink = () => {
            <form
                onSubmit={(e) => {
                    e.preventDefault();
-                   createLink();
+                   const a = createLink();
+                   a.catch(console.log)
                }}
            >
                <div className="flex flex-column mt3">
