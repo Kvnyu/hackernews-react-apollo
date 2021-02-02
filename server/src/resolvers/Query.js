@@ -17,8 +17,9 @@ async function feed(parent, args, context, info) {
 
   const count = await context.prisma.link.count({ where });
 
+  //todo make id something else, using args.skip creates a unique return id so that frontend cache doesn't overwrite each time
   return {
-    id: 'main-feed',
+    id: args.take,
     links,
     count
   };

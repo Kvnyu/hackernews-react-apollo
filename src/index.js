@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import {
     ApolloClient,
     ApolloProvider,
-    createHttpLink,
+    createHttpLink, defaultDataIdFromObject,
     InMemoryCache,
     split
 } from '@apollo/client';
@@ -53,7 +53,16 @@ const link = split(
 
 const client = new ApolloClient({
     link,
-    cache: new InMemoryCache()
+    cache: new InMemoryCache({
+        dataIdFromObject: object => {
+            console.log(object)
+            switch (object.__typename) {
+                case 'feed': return object.skip;
+                default: return defaultDataIdFromObject(object);
+            }
+        }
+
+    })
 });
 
 ReactDOM.render(

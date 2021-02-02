@@ -69,6 +69,7 @@ const NEW_VOTES_SUBSCRIPTION = gql`
 
 const getLinksToRender = (isNewPage, data) => {
     if (isNewPage) {
+        //its just returning whats already in data over here?
         return data.feed.links;
     }
     const rankedLinks = data.feed.links.slice();
@@ -96,9 +97,7 @@ const LinkList = () => {
     const page = parseInt(
         pageIndexParams[pageIndexParams.length - 1]
     );
-
     const pageIndex = page ? (page - 1) * LINKS_PER_PAGE : 0;
-
     const {
         data,
         loading,
@@ -107,6 +106,9 @@ const LinkList = () => {
     } = useQuery(FEED_QUERY, {
         variables: getQueryVariables(isNewPage, page)
     });
+
+    console.log(data)
+    //useQuery checks the apollo cache to see if the data you requested is already available locally
 
     subscribeToMore({
         document: NEW_LINKS_SUBSCRIPTION,
@@ -139,13 +141,14 @@ const LinkList = () => {
             {data && (
                 <>
                     {getLinksToRender(isNewPage, data).map(
-                        (link, index) => (
+                        (link, index) => {
+                            return (
                             <Link
                                 key={link.id}
                                 link={link}
                                 index={index + pageIndex}
                             />
-                        )
+                        )}
                     )}
                     {isNewPage && (
                         <div className="flex ml4 mv3 gray">
