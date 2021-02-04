@@ -91,6 +91,9 @@ const LinkList = () => {
     const isNewPage = history.location.pathname.includes(
         'new'
     );
+    const isTopPage = history.location.pathname.includes(
+        'top'
+    );
     const pageIndexParams = history.location.pathname.split(
         '/'
     );

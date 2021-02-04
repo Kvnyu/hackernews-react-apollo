@@ -31,6 +31,11 @@ const App = () => {
                                 path="/new/:page"
                                 component={LinkList}
                             />
+                            <Route
+                                exact
+                                path="/top"
+                                component={LinkList}
+                            />
                         </Switch>
                 </div>
         </div>

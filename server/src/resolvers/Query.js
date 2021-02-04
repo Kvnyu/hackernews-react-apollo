@@ -19,7 +19,7 @@ async function feed(parent, args, context, info) {
 
   //todo make id something else, using args.skip creates a unique return id so that frontend cache doesn't overwrite each time
   return {
-    id: args.take,
+    id: args.skip,
     links,
     count
   };
